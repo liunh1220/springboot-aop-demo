@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Log" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="reqSource" property="reqSource" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="fullName" property="fullName" jdbcType="VARCHAR" />
+    <result column="loginName" property="loginName" jdbcType="VARCHAR" />
+    <result column="moduleType" property="moduleType" jdbcType="VARCHAR" />
+    <result column="operateCode" property="operateCode" jdbcType="VARCHAR" />
+    <result column="operateValue" property="operateValue" jdbcType="VARCHAR" />
+    <result column="operateDateTime" property="operateDateTime" jdbcType="TIMESTAMP" />
+    <result column="createDateTime" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="operateStatus" property="operateStatus" jdbcType="VARCHAR" />
+    <result column="localAddr" property="localAddr" jdbcType="VARCHAR" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="param" property="param" jdbcType="VARCHAR" />
+    <result column="exceptionDetail" property="exceptionDetail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, reqSource, type, ip, fullName, loginName, moduleType, operateCode, operateValue, 
+    operateDateTime, createDateTime, remark, operateStatus, localAddr, method, param, 
+    exceptionDetail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.Log" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_log (reqSource, type, ip, 
+      fullName, loginName, moduleType, 
+      operateCode, operateValue, operateDateTime, 
+      createDateTime, remark, operateStatus, 
+      localAddr, method, param, 
+      exceptionDetail)
+    values (#{reqSource,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{fullName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{moduleType,jdbcType=VARCHAR}, 
+      #{operateCode,jdbcType=VARCHAR}, #{operateValue,jdbcType=VARCHAR}, #{operateDateTime,jdbcType=TIMESTAMP}, 
+      #{createDateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{operateStatus,jdbcType=VARCHAR}, 
+      #{localAddr,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, #{param,jdbcType=VARCHAR}, 
+      #{exceptionDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.Log" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reqSource != null" >
+        reqSource,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="fullName != null" >
+        fullName,
+      </if>
+      <if test="loginName != null" >
+        loginName,
+      </if>
+      <if test="moduleType != null" >
+        moduleType,
+      </if>
+      <if test="operateCode != null" >
+        operateCode,
+      </if>
+      <if test="operateValue != null" >
+        operateValue,
+      </if>
+      <if test="operateDateTime != null" >
+        operateDateTime,
+      </if>
+      <if test="createDateTime != null" >
+        createDateTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="operateStatus != null" >
+        operateStatus,
+      </if>
+      <if test="localAddr != null" >
+        localAddr,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="param != null" >
+        param,
+      </if>
+      <if test="exceptionDetail != null" >
+        exceptionDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reqSource != null" >
+        #{reqSource,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleType != null" >
+        #{moduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="operateCode != null" >
+        #{operateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operateValue != null" >
+        #{operateValue,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDateTime != null" >
+        #{operateDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operateStatus != null" >
+        #{operateStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="localAddr != null" >
+        #{localAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null" >
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDetail != null" >
+        #{exceptionDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Log" >
+    update t_log
+    <set >
+      <if test="reqSource != null" >
+        reqSource = #{reqSource,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null" >
+        fullName = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        loginName = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleType != null" >
+        moduleType = #{moduleType,jdbcType=VARCHAR},
+      </if>
+      <if test="operateCode != null" >
+        operateCode = #{operateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operateValue != null" >
+        operateValue = #{operateValue,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDateTime != null" >
+        operateDateTime = #{operateDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDateTime != null" >
+        createDateTime = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operateStatus != null" >
+        operateStatus = #{operateStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="localAddr != null" >
+        localAddr = #{localAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null" >
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionDetail != null" >
+        exceptionDetail = #{exceptionDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Log" >
+    update t_log
+    set reqSource = #{reqSource,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      fullName = #{fullName,jdbcType=VARCHAR},
+      loginName = #{loginName,jdbcType=VARCHAR},
+      moduleType = #{moduleType,jdbcType=VARCHAR},
+      operateCode = #{operateCode,jdbcType=VARCHAR},
+      operateValue = #{operateValue,jdbcType=VARCHAR},
+      operateDateTime = #{operateDateTime,jdbcType=TIMESTAMP},
+      createDateTime = #{createDateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      operateStatus = #{operateStatus,jdbcType=VARCHAR},
+      localAddr = #{localAddr,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      param = #{param,jdbcType=VARCHAR},
+      exceptionDetail = #{exceptionDetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+
+
+</mapper>

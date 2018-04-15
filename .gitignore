@@ -18,6 +18,8 @@
 *.recommenders
 *.settings
 *.iml
+*.project
+*.classpath
 *.factorypath
 */class/*
 */target/*
@@ -29,5 +31,7 @@ hs_err_pid*
 /class/
 /test/
 .idea/
+.apt_generated/
 */.idea/
 */.settings/
+*/.apt_generated/

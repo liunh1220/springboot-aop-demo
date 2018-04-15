@@ -21,6 +21,8 @@
 *.project
 *.classpath
 *.factorypath
+mvnw
+*.cmd
 */class/*
 */target/*
 # */test/*
@@ -31,7 +33,9 @@ hs_err_pid*
 /class/
 /test/
 .idea/
+.mvn/
 .apt_generated/
+/*.mvn/
 */.idea/
 */.settings/
 */.apt_generated/
